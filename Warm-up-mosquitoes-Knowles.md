@@ -1,7 +1,7 @@
 Warm-up mini-Report: Mosquito Blood Hosts in Salt Lake City, Utah
 ================
 Hailey Knowles
-2025-10-09
+2025-10-11
 
 - [ABSTRACT](#abstract)
 - [BACKGROUND](#background)
@@ -32,12 +32,11 @@ hosts for WNV and that areas with a higher number of WNV will also have
 a larger population of House Finches. Data for this experiment was
 collected by collecting mosquitoes from various spots around the Salt
 Lake City area. These samples were then tested to determine the blood
-meal host and also whether it was positive or negative for WNV. The host
-species was determined by coding the the COi DNA sequences. Based upon
-the results of the study it is proven that the areas with higher number
-of WNV cases also has a larger number of House Finches being used as
-blood meals for the mosquitoes. The statistical analyses run also show
-support for these results.
+meal host and also whether it was positive or negative for WNV. Based
+upon the results of the study, our findings showed, that it is proven
+that the areas with higher number of WNV cases also has a larger number
+of House Finches being used as blood meals for the mosquitoes. The
+statistical analyses run also show support for these results.
 
 # BACKGROUND
 
@@ -101,66 +100,70 @@ arrows(duration$lo, bp, duration$hi, bp,
 
 ## Question
 
-During this study we were hoping to discover what types of birds are
+During this study we were seeking to discover what types of birds are
 more likely to conduct the WNV in the Salt Lake City area?
 
 ## Hypothesis
 
-We hypothesize that based on data collected that the house finch will be
-the main host for the WNV from samples collected within the Salt Lake
+We hypothesize that based on data collected, that the house finch will
+be the main host for the WNV from samples collected within the Salt Lake
 City area.
 
 ## Prediction
 
-If if our hypothesis is true then we will predict that the areas with
-the highest count of WNV will be in areas that also have the highest
-number of house finches.
+If the hypothesis is proven to be true then we will find that the areas
+with the highest count of WNV will be in areas that also have the
+highest number of House Finches.
 
 # METHODS
 
-1.  Samples of mosquitoes were collected from the traps set at various
-    locations across the Salt Lake City area.
-2.  The mosquito samples were then sent to our class where we ran PCR to
-    amplify the DNA strands that had the COi gene to determine where the
-    mosquito’s blood meal came from.
-3.  These are the steps of the PCR ran in class and in the lab
+Samples of mosquitoes were collected from the traps set at various
+locations across the Salt Lake City area. The mosquito samples were then
+sent to our class where we ran PCR to amplify the DNA strands that had
+the COi gene to determine where the mosquito’s blood meal came from.
+These are the steps of the PCR ran in class and in the lab. The first
+step I observed in the demo involved placing the master mix into the
+vials to be run through the PCR process. We also have positive and
+negative samples. The positive sample contains DNA with a known
+sequence, allowing us to compare it with the other samples we run. The
+negative sample is typically just water and contains no DNA, allowing us
+to ensure there were no contaminants. The next step was adding the DNA
+samples to the master mix. The next couple of steps are run in a lab,
+which we weren’t able to see in class. These steps include denaturation,
+which occurs when the DNA is separated into single strands. Annealing,
+which is when the primers are inserted, this targets the specific
+sequence. Extension, where the polymerase adds new nucleotides to the
+target strands, creating new strands of DNA. The reagents used are
+template DNA, which is the sample inserted that we aim to replicate.
+Primers are used to mark where the copying should start. The following
+reagent would be loose nucleotides, which is what allow the new strands
+to be made. Some enzymes are also used to help build the new DNA
+strands. After the PCR was successfully ran it was put into A’s, T’s,
+C’s and G’s. These sequences for each sample was then ran in BLASTn. The
+types of organisms that the blood meals came from were inserted into the
+datasheet.
 
-- The first step I observed in the demo involved placing the master mix
-  into the vials to be run through the PCR process. We also have
-  positive and negative samples. The positive sample contains DNA with a
-  known sequence, allowing us to compare it with the other samples we
-  run. The negative sample is typically just water and contains no DNA,
-  allowing us to ensure there were no contaminants. The next step was
-  adding the DNA samples to the master mix.
-- The next couple of steps are run in a lab, which we weren’t able to
-  see in class. These steps include denaturation, which occurs when the
-  DNA is separated into single strands. Annealing, which is when the
-  primers are inserted, this targets the specific sequence. Extension,
-  where the polymerase adds new nucleotides to the target strands,
-  creating new strands of DNA.
-- The reagents used are template DNA, which is the sample inserted that
-  we aim to replicate. Primers are used to mark where the copying should
-  start. The following reagent would be loose nucleotides, which is what
-  allow the new strands to be made. Some enzymes are also used to help
-  build the new DNA strands.
-
-4.  After the PCR was successfully ran it was put into A’s, T’s, C’s and
-    G’s. These sequences for each sample was then ran in BLASTn. The
-    types of organisms that the blood meals came from were inserted into
-    the datasheet.
-5.  The final step was analyzing the data to determine if the house
-    finch acted as the main host for WNV in the Salt Lake City area.
-6.  Once the data was collected it was inserted into a data sheet and
-    analyzed using a bar plot (for visual analysis) then also inserted
-    into a statistical test to determine if the observations we observed
-    in the bar plot were statistically significant.
+The final step was analyzing the data to determine if the house finch
+acted as the main host for WNV in the Salt Lake City area. Once the data
+was collected it was inserted into a data sheet and analyzed using a bar
+plot (for visual analysis) then also inserted into a statistical test to
+determine if the observations we observed in the bar plot were
+statistically significant. The bar plot was created in R using the
+built-in statistical package. The tools used for making this bar plot
+were the blood meal and WNV data sheets. The statistical models that
+were used were descriptive statistics that allows us to see the summed
+counts, and also the data visualization to create the bar plot. The
+significance test that was run to analyze the data was summary(glm1) and
+summary(glm2). The test for summary(glm1) was to look at the number of
+House Finches and see if this can be used to predict the number of
+positive tests for WNV. To test this a generalized linear model function
+was used with the model type being a logistic regression. The test for
+summary(glm2) was to look at the total House Finch rates and whether
+this has an impact on the positivity rate. To test this a generalized
+linear model function was used with the model type being a linear
+regression.
 
 ## 1st Analysis - Barplot
-
-In the first analysis was run to compare the number of mosquito blood
-meals that came from locations without any WNV-positive pools and the
-locations that had one or more WNV-positive pools for each host species
-that was tested.
 
 ``` r
 ## import counts_matrix: data.frame with column 'loc_positives' (0/1) and host columns 'host_*'
@@ -258,13 +261,20 @@ par(op)
 host_species_colors <- species_colors
 ```
 
-## 2nd Analysis - Generalized Linear Model
+This analysis was run to compare the number of mosquito blood meals that
+came from locations without any WNV-positive pools and the locations
+that had one or more WNV-positive pools for each host species that were
+tested. The left bar plot shows the locations where WNV was not detected
+and organizes them by the host species and the number of counts for each
+of these species. The right bar plot shows the same information but for
+the locations where WNV was detected and was also organized by host
+species and the counts for each. We can see from this visual analysis
+that in both WNV positive and WNV negative areas that House Finches were
+the predominate host species chosen by the mosquitoes. The WNV positive
+side had an even larger margin of distinction between themselves and the
+rest of the host species.
 
-This test allows us to formally determine if the visibly seen
-relationship in the bar plots is statistically significant or not. This
-test looked at whether or not the number of House Finch blood meals
-correlates to the sites with WNV with binary values or just overall WNV
-positivity rates with numeric values.
+## 2nd Analysis - Generalized Linear Model
 
 ``` r
 #glm with house finch alone against binary +/_
@@ -321,7 +331,29 @@ summary(glm2)
     ## 
     ## Number of Fisher Scoring iterations: 2
 
+This test allows us to formally determine if the visibly seen
+relationship in the bar plots is statistically significant or not. This
+test looked at whether or not the number of House Finch blood meals
+correlates to the sites with WNV with binary values or just overall WNV
+positivity rates with numeric values. The test for glm1 was to determine
+whether the number of House Finches in an area was able to be used as a
+predicted measure for areas that are more likely to test positive for
+WNV. The results of this test showed that the number of House Finches
+used as hosts has a statistically significant correlation to the rate of
+WNV in those locations, given that the p-value is 0.0287. The test for
+glm2 was to determine if the number of House Finches used as blood meals
+was correlated to the positivity rate. The results of this test showed
+that when the House Finch blood meal counts increased the rate for
+positivity also increased and this was statistically significant with a
+p-value of 4.54e-05.
+
 # DISCUSSION
+
+Given the results for both visual and numerical analyses ran, we can see
+that there is a statistically significant correction between House Finch
+populations and the WNV postitivity rate. This overall supports the idea
+that House Finches act as a amplifying host for the WNV in the Salt Lake
+City area.
 
 ## Interpretation of 1st Analysis (Barplot)
 
@@ -375,7 +407,7 @@ area.
     Dis. 2003 Mar;9(3):311-22. <https://doi.org/10.3201/eid0903.020628>
 
 2.  ChatGPT. OpenAI, version Jan 2025. Used as a reference for functions
-    such as plot() and to correct syntax errors. Accessed 2025-10-09.
+    such as plot() and to correct syntax errors. Accessed 2025-10-11.
 
 3.  Taieb, L., Ludwig, A., Ogden, N. H., Lindsay, R. L., Iranpour, M.,
     Gagnon, C. A., & Bicout, D. J. (2020). Bird Species Involved in West
