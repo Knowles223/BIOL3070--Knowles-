@@ -1,0 +1,147 @@
+---
+title: "Final Project"
+author: "Norah Saarman"
+date: "`r Sys.Date()`"
+output:
+  github_document:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+# ABSTRACT
+
+Fill in abstract... Write this last, after finishing methods, results, and discussion. Summarize the overall study question, approach, results, and conclusion in a short paragraph.
+
+# BACKGROUND
+
+Provide background on the WNV system and why we are studying mosquito blood meals. Include information on DNA extractions, PCR, sequencing, and how this relates to identifying hosts. Support your statements with references.
+
+Example: You might cite Komar et al. (2003) showing viremia duration in birds, which explains why house finches could act as amplifying hosts. Connect this to the prediction that locations with more house finch blood meals should also show higher rates of WNV-positive mosquito pools.
+
+NOTE: Examples of data you can plot for the background info at https://github.com/saarman/BIOL3070/
+
+# STUDY QUESTION and HYPOTHESIS
+
+## Questions  
+Does the location (Northern or Southern counties) of the fireflies affect the level of abundance?
+
+## Hypothesis 
+We predict that Northern counties in Utah will have a higher overall abundance than Southern counties.
+  
+## Prediction
+A possible test statistic is a two-sample t-test. This would allow us to compare the two variables of north and south to determine which one has a higher abundance. 
+
+# METHODS
+
+Fill in here... Summarize the procedures and analyses you use in this report. In this section, describe what you did and why. Don’t just restate the code — explain the logic of each analysis in plain language. Keep each subsection short (2–4 sentences).
+
+## Fill in 1st analysis e.g. box and whisker 
+
+Fill in here... Explain that you compared the number of mosquito blood meals from each host species between sites with no WNV-positive pools and sites with one or more WNV-positive pools. Describe why a barplot helps visualize this comparison.
+
+```{r}
+# Firefly Boxplot
+
+# Load needed packages
+library(ggplot2)
+library(stringi)
+
+# Read in the dad
+fireflies <- read.csv("Copy of firefliesUtah - Usable Data.csv", stringsAsFactors = FALSE)
+
+# Rename columns to simpler names
+colnames(fireflies) <- c("firefly_count", "region")
+
+# Diagnostics
+cat("Original region values:\n")
+print(unique(fireflies$region))
+cat("\nCounts by region (before cleaning):\n")
+print(as.data.frame(table(region = fireflies$region, useNA = "ifany")))
+
+# Replace blanks with NA
+fireflies$region[fireflies$region == ""] <- NA
+
+# Normalize
+fireflies$region <- stri_trans_general(fireflies$region, "NFKC")
+
+# Remove invisible characters
+fireflies$region <- stri_replace_all_regex(fireflies$region, "\\p{C}", "")
+
+# Convert non-breaking spaces to regular and trim spaces
+fireflies$region <- gsub("\u00A0", " ", fireflies$region)
+fireflies$region <- trimws(fireflies$region)
+
+# Convert to lowercase
+fireflies$region <- tolower(fireflies$region)
+
+# Fix obvious typos or abbreviations
+fireflies$region[fireflies$region %in% c("n", "nrth", "noth")] <- "north"
+fireflies$region[fireflies$region %in% c("s", "sth", "soth")] <- "south"
+
+# Keep valid categories
+fireflies$region <- factor(fireflies$region, levels = c("north", "south"))
+fireflies_clean <- droplevels(subset(fireflies, !is.na(region)))
+
+# Check column names
+cat("\nUnique cleaned region values:\n")
+print(unique(fireflies_clean$region))
+cat("\nCounts by region (after cleaning):\n")
+print(as.data.frame(table(region = fireflies_clean$region)))
+
+#Box Plot
+ggplot(fireflies_clean, aes(x = region, y = firefly_count, fill = region)) +
+geom_boxplot(width = 0.6, color = "black", alpha = 0.7) + # clean, solid boxes
+labs(
+title = "Firefly Abundance by Region",
+x = "Region",
+y = "Firefly Count"
+) +
+scale_fill_manual(values = c("north" = "#8EC9E8", "south" = "#F4A261")) + # subtle professional palette
+coord_cartesian(ylim = c(0, 50)) +
+theme_minimal(base_size = 13) +
+theme(
+legend.position = "none",
+plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
+axis.text = element_text(size = 12),
+axis.title = element_text(size = 13),
+panel.grid.major.x = element_blank(),
+panel.grid.minor = element_blank()
+)
+
+```
+
+## Fill in 2nd analysis/plot e.g. two-sample t-test
+
+This is where we will add a two-sample t-test analysis for our data set. A two-sample t-test is a test to determine if there is a significant difference between the two means. Which in our case would be north vs south and the mean abundance of fireflies. 
+
+# DISCUSSION
+
+Fill in here... For each analysis, summarize what you found and interpret the results. Say whether they support or contradict your hypothesis.
+
+## Interpretation of 1st analysis (e.g. barplots)
+
+The first analysis... fill in here what it was, the summary of the results, and your interpretation. 
+
+## Interpretation of 2nd analysis (e.g. generalized linear model)
+
+The second analysis... fill in here what it was, the summary of the results, and your interpretation.
+
+## Interpretation of optional 3rd analysis (e.g. heatmaps)
+
+The third analysis... fill in here what it was, the summary of the results, and your interpretation.
+
+# CONCLUSION
+
+Fill in here... State the overall answer to your research question, based on all analyses. Mention whether the evidence supports your hypothesis and what it suggests about WNV amplification in Salt Lake City.
+
+# REFERENCES     
+Fill in here... List all sources you cited in your background and throughout the report. Use a consistent style.a conclusion you can draw from your analysis.
+
+1. Komar N, Langevin S, Hinten S, Nemeth N, Edwards E, Hettler D, Davis B, Bowen R, Bunning M. Experimental infection of North American birds with the New York 1999 strain of West Nile virus. Emerg Infect Dis. 2003 Mar;9(3):311-22. https://doi.org/10.3201/eid0903.020628
+
+2. ChatGPT. OpenAI, version Jan 2025. Used as a reference for functions such as plot() and to correct syntax errors. Accessed `r Sys.Date()`.
+
+
+
