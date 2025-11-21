@@ -1,7 +1,7 @@
 Final Project
 ================
 Hailey Knowles
-2025-11-12
+2025-11-21
 
 - [ABSTRACT](#abstract)
 - [BACKGROUND](#background)
@@ -26,38 +26,48 @@ Hailey Knowles
 
 # ABSTRACT
 
-Fill in abstract… Write this last, after finishing methods, results, and
-discussion. Summarize the overall study question, approach, results, and
-conclusion in a short paragraph.
+This research project investigated the effect of location (Northern
+vs. Southern counties in Utah) on the abundance of fireflies observed.
+The data was collected from various locations, and the counts of
+fireflies were compared by region using visualization analysis (box plot
+and violin plot) and also using a quasipoisson regression, which is used
+when the data collected is over-dispersed. The analysis indicated a
+significant difference in firefly abundance across regions. However, the
+region with the higher abundance was the opposite of the original
+hypothesis. The Southern counties in Utah showed a higher abundance of
+fireflies compared to the Northern counties. After examining these
+findings, it is important to understand the importance of choosing
+appropriate statistical models and tests for ecological data, which
+suggests that the region in Utah may affect firefly abundance.
 
 # BACKGROUND
 
-Fireflies are a very interesting species that many researchers want to
-look into due to their glowing abilities. They are classified in the
-Lampyridae family of insects. According to firefly conservation and
-research there are 2400 firefly species in 144 genera (Firefly
-conservation and research, 2025). According to a study conducted in 2023
-it was determined that water is a vital source for fireflies and it is
-required for them to thrive in their various environments. Fireflies
-have a preference for areas with high humidity and constant moisture.
-They also prefer areas with abundant trees and various types of grasses
-(Qing & Lin, 2023). Fireflies need to lay their eggs in most soil or
-even in damp tree trunks. Many fireflies are found in tropical regions,
-but there are a few fireflies that can be found in dry forests or arid
+Fireflies are a fascinating species that many researchers are interested
+in due to their glowing abilities. They are classified in the Lampyridae
+family of insects. According to Firefly Conservation and Research, there
+are over 2400 firefly species in 144 genera (Firefly Conservation and
+Research, 2025). According to a study conducted in 2023, it was
+determined that water is a vital source for fireflies and is required
+for them to thrive in their various environments. Fireflies have a
+preference for areas with high humidity and constant moisture. They also
+prefer areas with abundant trees and various types of grasses (Qing &
+Lin, 2023). Fireflies need to lay their eggs in moist soil or even in
+damp tree trunks. Many fireflies are found in tropical regions, but
+there are a few fireflies that can be found in dry forests or arid
 environments, but only during the rainy seasons. These fireflies can be
 found in every part of the world except for Antarctica. These kinds of
-conditions are more common in the Northern areas of Utah instead of the
+conditions are more common in the Northern areas of Utah compared to the
 Southern areas of Utah (Grimaldi, 2025).
 
-There is a wide variety of climates within the state of Utah and some of
-these variations are based on Norther and Southern areas. The more South
-you move, the less rainfall you see and a smaller amount of green
-vegetation. Utah is an arid climate that has very little rainfall
-accumulate annually and can receive less than 15 inches of rain in a
-year and was found that the Northern areas of Utah tend to be cooler on
-average than the Southern Utah regions. During the whole year there is a
-tendency for the Northern regions of Utah to also receive more rain than
-the Southern regions (GottAgoUtah_admin, 2024).
+There is a wide variety of climates within the state of Utah, and some
+of these variations are based on the Northern and Southern areas. The
+further South you move, the less rainfall you see and the smaller amount
+of green vegetation. Utah has an arid climate with little annual
+rainfall, receiving less than 15 inches of rain per year. It was found
+that the Northern areas of Utah tend to be cooler on average than the
+Southern Utah regions. During the whole year, there is a tendency for
+the Northern regions of Utah to also receive more rain than the Southern
+regions (GottAgoUtah_admin, 2024).
 
 # STUDY QUESTION and HYPOTHESIS
 
@@ -69,15 +79,15 @@ affect the level of abundance of fireflies in Utah?
 ## Hypothesis
 
 We hypothesize that Northern counties in Utah will have a higher overall
-abundance than compared to Southern counties due to a lower overall
+abundance compared to Southern counties due to a lower overall
 temperature in the Northern counties and a higher abundance of green
 vegetation and rainfall when compared to the Southern counties.
 
 ## Prediction
 
 We predict that Northern counties in Utah will have a higher overall
-abundance than compared to Southern counties. A possible test statistic
-is a quasipoisson regression. This would allow us to compare the two
+abundance compared to Southern counties. A possible test statistic is a
+quasipoisson regression model. This would allow us to compare the two
 variables of north and south abundance values to determine which one has
 a higher abundance and if the difference is significant.
 
@@ -87,35 +97,37 @@ The data that was used for this research project was collected from a
 firefly observation project conducted in various locations around Utah.
 The exact locations of the observations were hidden due to the
 protection of privacy. The data was then organized by county, abundance
-count, date and had individualized notes about where the fireflies were
+count, date, and had individualized notes about where the fireflies were
 seen and the type of environment.
 
-The data sheet that was filled-out and organized by our research team in
-a way that allowed the running of various tests and allowed the plots to
-be created. Each county in Utah within the data set was assigned to be
-either North or South based on distinctions made by our research team on
-what constituted as North or South. The distinction made was that any
-county that was inline with Carbon county or lower would be considered a
-Southern county and anything above would be considered a Northern
+The data sheet that was filled out and organized by our research team
+allowed the running of various tests and the creation of plots. Each
+county in Utah within the data set was assigned to be either Northern or
+Southern based on distinctions made by our research team on what
+constituted North or South. The distinction made was that any county
+that was in line with Carbon County or lower would be considered a
+Southern county, and anything above would be considered a Northern
 county.
 
-The plots created based on the data was a box plot and a violin plot.
+The plots created based on the data were a box plot and a violin plot.
 The box plot allows us to visualize the data in a way to compare the
 mean values and distribution for both North and South. The other plot is
-a violin plot which allows the visualization of the distribution of the
-abundance of fireflies based on being located in the North or South
-counties. The final statistical analysis that was ran was a quasipoisson
-regression which allowed the test to assume that the data distribution
-was not normal and had a skewed tail. It compares all the values in the
-data set and determines if the difference is significant or not
-significant.
+a violin plot, which allows the visualization of the distribution of the
+abundance of fireflies based on their location in the North or South
+counties. The final statistical analysis that was run was a quasipoisson
+regression, which allowed the test to assume that the data distribution
+was not normal and had a skewed tail. It was determined that the data
+was over dispersed and therefore allowed the use of the quasipoisson
+regression because the variance was greater than the mean. It compares
+all the values in the data set and determines if the difference is
+significant or not significant.
 
 ## 1st Analysis - Box Plot
 
 This is a box plot that allows the visualization of the various aspects
-of the data set comparing the abundance of fireflies in Northern and
+of the data set, comparing the abundance of fireflies in Northern and
 Southern counties in Utah. It allows the visual comparison of the mean,
-max, min and outliers.
+max, min, and outliers.
 
 ``` r
 # Firefly Boxplot (Log-Transformed, No Blanks)
@@ -141,9 +153,9 @@ scale_fill_manual(values = c("north" = "#00A9FF", "south" = "orange")) +
 theme_minimal(base_size = 13) +
 theme(
 legend.position = "none",
-plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
-axis.text = element_text(size = 12),
-axis.title = element_text(size = 13),
+plot.title = element_text(size = 23, face = "bold", hjust = 0.5),
+axis.text = element_text(size = 20, face = "bold"),
+axis.title = element_text(size = 20, face = "bold"),
 panel.grid.major.x = element_blank(),
 panel.grid.minor = element_blank()
 )
@@ -153,6 +165,10 @@ panel.grid.minor = element_blank()
     ## (`stat_boxplot()`).
 
 ![](Final-Project-Rmd_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
+
+``` r
+#ChatGPT. OpenAI, version GPT-5.1. Used as a first pass, but edited carefully to make the figure look correct. Accessed [November 2025].
+```
 
 ## 2nd Analysis - Violin Plot
 
@@ -205,9 +221,11 @@ y = "Firefly Count"
 theme_minimal(base_size = 13) +
 theme(
 legend.position = "bottom",
-plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
+plot.title = element_text(size = 24, face = "bold", hjust = 0.5),
 axis.text.x = element_blank(),
-axis.ticks.x = element_blank()
+axis.ticks.x = element_blank(),
+axis.title.y = element_text(size = 20, face = "bold"),
+axis.title.x = element_text(size = 20, face = "bold")
 )
 ```
 
@@ -216,14 +234,18 @@ axis.ticks.x = element_blank()
 
 ![](Final-Project-Rmd_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
 
+``` r
+#ChatGPT. OpenAI, version GPT-5.1. Used as a first pass, but edited carefully to make the figure look correct. Accessed [November 2025].
+```
+
 ## 3rd Analysis - Quasipoisson Regression
 
-This is a quasipoisson regression analysis that is comparing the values
-of firefly abundance in the two groups (Northern and Southern counties
-in Utah) to see if they are statistically different from each other or
-not. In this case with a p-value of 0.00344 we can understand that there
-is a statistically significant difference between these two groups with
-the Southern counties being of higher value.
+This is a quasipoisson regression analysis that compares the values of
+firefly abundance in the two groups (Northern and Southern counties in
+Utah) to see if they are statistically different from each other. In
+this case, with a p-value of 0.00344, we can understand that there is a
+statistically significant difference between these two groups, with the
+Southern counties being of higher value.
 
 ``` r
 # Read in the data
@@ -306,83 +328,85 @@ summary(quasi_model)
 ``` r
 # Add predicted counts to the data
 fireflies$predicted_count <- predict(poisson_model, newdata = fireflies, type = "response")
+#ChatGPT. OpenAI, version GPT-5.1. Used as a first pass, but edited carefully. Accessed [November 2025].
 ```
 
 # DISCUSSION
 
 Given the results from the box plot, violin plot, and the quasipoisson
-regression we can conclude that there is a statistically significant
-difference between the abundance of fireflies observed in both the
-Northern and Southern counties in Utah.
+regression, we can conclude that there is a statistically significant
+difference between the abundance of fireflies observed in the Northern
+and Southern counties in Utah.
 
 ## Interpretation of 1st Analysis (Box Plot)
 
-The box plot shows information that compares the means, min, max and the
-1st and 3rd quartiles. All of this information can not, on its own,
-support the hypothesis stated above that the Northern counties in Utah
-would have a higher overall abundance of fireflies than the Southern
-counties. This visually shows the means of the two groups and as can be
-seen we understand that the means are very similar but the Southern
-means are slightly larger than the Northern means.
+The box plot shows information comparing the means, minimums, maximums,
+and the first and third quartiles. While this information alone cannot
+fully support our hypothesis, it indicates that Northern counties in
+Utah do not have a higher abundance of fireflies than Southern counties.
+The visual comparison shows that the two groups’ means are similar, but
+the Southern counties have slightly higher median values.
 
 ## Interpretation of 2nd Analysis (Violin Plot)
 
-This violin plot gives another visual representation of the data
-collected. It allows the observation counts to be seen side-by-side to
-see the distribution of abundance between the Northern and Southern
-counties in Utah. As seen in the plot there is a cluster of abundance
-around four fireflies seen in the observations collected. The Northern
-counts have high spikes in abundance that make the counts less
-consistant. The Southern counties on the other hand have a very gradual
-increase in counts and is more consistant than the Northern
-observations.
+The violin plot provides another visual representation of the data. It
+allows the observation counts to be compared side-by-side for Northern
+and Southern counties. In the plot, there is a cluster of higher
+abundance around four fireflies per observation in the Southern
+counties. The Northern counties show high spikes in abundance, making
+the counts less consistent, while the Southern counties show a more
+gradual, consistent increase. This supports the idea that Southern
+counties may have more stable firefly populations compared to the
+Northern region.
 
 ## Interpretation of 3rd Analysis (Quasipoisson Regression)
 
-Based on the quasipoisson regression we can confirm that there is no
-correlation between the two different groups. The p-value given in these
-analysis was 0.00344, and this gives a significant distinction between
-the Northern and Southern counties in Utah in which the Southern
-county’s counts were higher than the Northern counties. The quasipoisson
-regression allows the program to understand that our data isn’t normally
-distributed and that both the North and South regions have long tails
-that can disrupt these distributions. The Southern region has a more
-average count while the Northern region has super high firefly
-population booms that lengthen the tail and disrupt the distribution
-even more.
+The quasipoisson regression confirms a significant difference between
+the two groups. The p-value in the analysis was 0.00344, indicating a
+statistically significant difference in abundance between Northern and
+Southern counties. Specifically, the Southern counties had higher
+abundance counts than the Northern counties.
+
+The quasipoisson model was appropriate because the data were not
+normally distributed, and both the Northern and Southern regions showed
+long-tailed distributions. These high-count observations lengthened the
+tail and influenced the distribution even when the averages mainly
+remained moderate. The Northern region contains some abnormally
+high-count observations, while the Southern region shows more consistent
+patterns of abundance.
 
 # CONCLUSION
 
-Based on the evidence collected there is no support for the original
-hypothesis that there will be a higher overall observation abundance in
-the Northern counties in Utah compared to the Southern counties. Each
-analysis ran showed that there is a significant difference between the
-mean abundance measurements and that a significant conclusion can be
-drawn, but in the opposite direction as the original hypothesis stated.
-The Southern counties were found to have a statistically significant
-higher number for observations compared to the Northern counties in
-Utah. There were many limitations that occurred during this experiment.
-This data was collected from various locations in Utah but the exact
-location of the sightings were undisclosed and cannot be exact. Another
-uncertainty was the way that they data was collected. There were many
-observations that were collected by other observers and cannot be
-counted on to be exactly accurate and many of the observation numbers
-should be considered approximate and not exact due to the difficulty of
-actually counting the flying fireflies. The counts in Northern and
-Southern counties might be inaccurate due to the Northern counties
-having exponentially more observation counts compared to the Southern
-counties observations. The data used in this experiment fails to support
-the original hypothesis, and future studies should still be conducted to
-determine the different between climates and its impact on firefly
-observation counts.
+Based on the evidence collected, there is no support for the original
+hypothesis that predicted a higher overall observation abundance in the
+Northern counties in Utah compared to the Southern counties. Each
+analysis conducted showed that there is a significant difference between
+the mean abundance measurements and that a significant conclusion can be
+drawn, but in the opposite direction from the initial hypothesis. The
+Southern counties were found to have a statistically significantly
+higher number of observations compared to the Northern counties in Utah.
+
+There were many limitations that occurred during this experiment. This
+data was collected from various locations in Utah, but the exact
+location of the sightings was undisclosed and may not be exact. Another
+uncertainty involves the way the data was collected. Observations were
+collected by multiple observers and counted manually, which may not be
+exactly accurate since many of the observation numbers should be
+considered approximate due to the difficulty of actually counting flying
+fireflies. The counts in Northern and Southern counties might be
+influenced by the Northern counties having many more observation counts
+compared to the Southern counties’ observations. The data used in this
+experiment fail to support the original hypothesis, and future studies
+should aim to determine the differences between climates and their
+impact on firefly observation counts.
 
 # REFERENCES
 
 1.  ChatGPT. OpenAI, version Jan 2025. Used as a reference for functions
-    such as plot() and to correct syntax errors. Accessed 2025-11-12.
+    such as plot() and to correct syntax errors. Accessed 2025-11-21.
 
 2.  Firefly Life Cycle & Habitat: Lightning bug facts. Orkin. (n.d.).
-    <https://www.orkin.com/pests/beetles/fireflies>
+    <https://www.orkin.com/pests/be>
 
 3.  GottAgoUtah_admin. (2024, December 9). Understanding Utah’s
     year-round weather conditions. Gotta Go Utah !
