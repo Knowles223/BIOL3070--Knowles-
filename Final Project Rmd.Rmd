@@ -43,8 +43,6 @@ The data sheet that was filled out and organized by our research team allowed th
 
 The plot created based on the data was a violin plot. The violin plot allows the visualization of the distribution of the abundance of fireflies based on their location in the Northern or Southern counties. The second analysis that was run was the Shapiro-Wilk test. This is a test that determines if the data presented follows the normal curve. In this case, it was determined that it didn't follow the normal curve and was over-dispersed. Then, to determine if the difference in the means for the two regions was significant, since the data were over-dispersed, a Wilcoxon test was run. This test allows the means to be compared while assuming that the curve isn't normal. To get more recognizable values, we compared the medians of the two regions.
 
-**These values allowed us to see that even though the difference wasn't significant, the Northern counties had a slightly higher abundance than the Southern counties in Utah.**
-
 ## 1st Analysis - Violin Plot
 
 This is a violin plot that expresses the data in a visual way to compare the distributions of the firefly abundance in Northern and Southern counties. The distribution is important to understand and look at side-by-side because then you can see what is the most common number of abundance observations.
