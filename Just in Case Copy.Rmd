@@ -1,4 +1,15 @@
 ---
+title: "Just in Case Copy"
+author: "Hailey Knowles"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+---
 title: "Final Project"
 author: "Hailey Knowles"
 date: "`r Sys.Date()`"
@@ -13,7 +24,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # ABSTRACT
 
-This research project investigated the effect of location (Northern vs. Southern counties in Utah) on the abundance of fireflies observed. The data was collected from various locations, and the counts of fireflies were compared by region using visualization analysis (violin plot) and also using a one-sided wilcoxon test, which is used when the data collected is over-dispersed and doesn't follow the normal curve. It was determined that the data didn't follow the normal curve by using the Shapiro-Wilk test. The analysis indicated a non-significant difference in firefly abundance across regions. However, the region with the higher abundance was the same direction as that of the original hypothesis. The Northern counties in Utah showed a higher abundance of fireflies compared to the Southern counties. After examining these findings, it is important to understand the importance of choosing appropriate statistical models and tests for ecological data, which suggests that the region in Utah may affect firefly abundance.
+This research project investigated the effect of location (Northern vs. Southern counties in Utah) on the abundance of fireflies observed. The data was collected from various locations, and the counts of fireflies were compared by region using visualization analysis (box plot and violin plot) and also using a quasipoisson regression, which is used when the data collected is over-dispersed. The analysis indicated a significant difference in firefly abundance across regions. However, the region with the higher abundance was the opposite of the original hypothesis. The Southern counties in Utah showed a higher abundance of fireflies compared to the Northern counties. After examining these findings, it is important to understand the importance of choosing appropriate statistical models and tests for ecological data, which suggests that the region in Utah may affect firefly abundance.
 
 # BACKGROUND
 
@@ -41,11 +52,46 @@ The data that was used for this research project was collected from a firefly ob
 
 The data sheet that was filled out and organized by our research team allowed the running of various tests and the creation of plots. Each county in Utah within the data set was assigned to be either Northern or Southern based on distinctions made by our research team on what constituted North or South. The distinction made was that any county that was in line with Carbon County or lower would be considered a Southern county, and anything above would be considered a Northern county.
 
-The plot created based on the data was a violin plot. The violin plot allows the visualization of the distribution of the abundance of fireflies based on their location in the Northern or Southern counties. The second analysis that was run was the Shapiro-Wilk test. This is a test that determines if the data presented follows the normal curve. In this case, it was determined that it didn't follow the normal curve and was over-dispersed. Then, to determine if the difference in the means for the two regions was significant, since the data were over-dispersed, a Wilcoxon test was run. This test allows the means to be compared while assuming that the curve isn't normal. To get more recognizable values, we compared the medians of the two regions.
+The plots created based on the data were a box plot and a violin plot. The box plot allows us to visualize the data in a way to compare the mean values and distribution for both North and South. The other plot is a violin plot, which allows the visualization of the distribution of the abundance of fireflies based on their location in the North or South counties. The final statistical analysis that was run was a quasipoisson regression, which allowed the test to assume that the data distribution was not normal and had a skewed tail. It was determined that the data was over dispersed and therefore allowed the use of the quasipoisson regression because the variance was greater than the mean. It compares all the values in the data set and determines if the difference is significant or not significant.
 
-**These values allowed us to see that even though the difference wasn't significant, the Northern counties had a slightly higher abundance than the Southern counties in Utah.**
+## 1st Analysis - Box Plot
 
-## 1st Analysis - Violin Plot
+This is a box plot that allows the visualization of the various aspects of the data set, comparing the abundance of fireflies in Northern and Southern counties in Utah. It allows the visual comparison of the mean, max, min, and outliers.
+
+```{r}
+# Firefly Boxplot (Log-Transformed, No Blanks)
+
+library(ggplot2)
+
+# Read in the data
+fireflies <- read.csv("Copy of firefliesUtah - Usable Data.csv", stringsAsFactors = FALSE)
+colnames(fireflies) <- c("firefly_count", "region")
+
+# Remove blank or missing region values
+fireflies <- subset(fireflies, region != "" & !is.na(region))
+
+# Box plot with log10 transformation (+1 to avoid log(0))
+ggplot(fireflies, aes(x = region, y = log10(firefly_count + 1), fill = region)) +
+geom_boxplot(width = 0.6, color = "black", alpha = 0.7) +
+labs(
+title = "Firefly Abundance by Region (Log Scale)",
+x = "Region",
+y = "Log-Transformed Firefly Count"
+) +
+scale_fill_manual(values = c("north" = "#00A9FF", "south" = "orange")) +
+theme_minimal(base_size = 13) +
+theme(
+legend.position = "none",
+plot.title = element_text(size = 23, face = "bold", hjust = 0.5),
+axis.text = element_text(size = 20, face = "bold"),
+axis.title = element_text(size = 20, face = "bold"),
+panel.grid.major.x = element_blank(),
+panel.grid.minor = element_blank()
+)
+#ChatGPT. OpenAI, version GPT-5.1. Used as a first pass, but edited carefully to make the figure look correct. Accessed [November 2025].
+```
+
+## 2nd Analysis - Violin Plot
 
 This is a violin plot that expresses the data in a visual way to compare the distributions of the firefly abundance in Northern and Southern counties. The distribution is important to understand and look at side-by-side because then you can see what is the most common number of abundance observations.
 
@@ -101,9 +147,9 @@ axis.title.x = element_text(size = 20, face = "bold")
 #ChatGPT. OpenAI, version GPT-5.1. Used as a first pass, but edited carefully to make the figure look correct. Accessed [November 2025].
 ```
 
-## 2nd Analysis - Shapiro-Wilk Test
+## 3rd Analysis - Wilcoxon Test
 
-The Shapiro-Wilk test allows the researchers to determine if their data follows a normal curve, or if it doesn't. The null hypothesis for this test is that the data does follow a normal curve, and the alternative hypothesis is that the data doesn't follow the normal curve and is over-dispersed. If the calculated p-value is significant or less then 0.05 then it would support the alternative hypothesis. 
+This is a quasipoisson regression analysis that compares the values of firefly abundance in the two groups (Northern and Southern counties in Utah) to see if they are statistically different from each other. In this case, with a p-value of 0.00344, we can understand that there is a statistically significant difference between these two groups, with the Southern counties being of higher value.
 
 ```{r}
 # Shapiro–Wilk tests for normality
@@ -121,46 +167,48 @@ shapiro.test(
 )
 ```
 
-## 3rd Analysis - One-Sided Wilcoxon Test
 
-The one-sided Wilcoxon test is a test that shows whether or not the data given for the two different regions have a significant difference in their means. This test also doesn't make near as many assumptions as other tests. It doesn't assume that the data has a certain distribution, equal variances, and many more. 
 
+```{r}
+wilcox.test(
+  firefly_count ~ region,
+  data = fireflies
+)
+```
+
+Wilcoxon Test Accounting for greater only
 ```{r}
 wilcox.test(firefly_count ~ region, data = fireflies,
             alternative = "greater")
 ```
 
-## 4th Analysis - Median Comparison
-
-This test is drawing up the medians for both the Northern and Southern counties for firefly abundance in Utah. This allows you to see the most common abundance count that allows you to easily see that the Northern counties have a higher abundance count than the Southern counties, even though it isn't significant. 
-
 ```{r}
 tapply(fireflies$firefly_count, fireflies$region, median)
 ```
 
+
+
 # DISCUSSION
 
-Given the results from the violin plot, Shapiro-Wilk test, One-sided Wilcoxon test, and the median test, we can conclude that there is not a statistically significant difference between the abundance of fireflies observed in the Northern and Southern counties in Utah.
+Given the results from the box plot, violin plot, and the quasipoisson regression, we can conclude that there is a statistically significant difference between the abundance of fireflies observed in the Northern and Southern counties in Utah.
 
-## Interpretation of 1st Analysis (Violin Plot)
+## Interpretation of 1st Analysis (Box Plot)
+
+The box plot shows information comparing the means, minimums, maximums, and the first and third quartiles. While this information alone cannot fully support our hypothesis, it indicates that Northern counties in Utah do not have a higher abundance of fireflies than Southern counties. The visual comparison shows that the two groups' means are similar, but the Southern counties have slightly higher median values.
+
+## Interpretation of 2nd Analysis (Violin Plot)
 
 The violin plot provides another visual representation of the data. It allows the observation counts to be compared side-by-side for Northern and Southern counties. In the plot, there is a cluster of higher abundance around four fireflies per observation in the Southern counties. The Northern counties show high spikes in abundance, making the counts less consistent, while the Southern counties show a more gradual, consistent increase. This supports the idea that Southern counties may have more stable firefly populations compared to the Northern region.
 
-## Interpretation of 2nd Analysis (Shapiro-Wilk Test)
+## Interpretation of 3rd Analysis (Quasipoisson Regression)
 
-The Shapiro-Wilks test is what allows the researchers to determine if the data follows the normal curve or not. In this case it gave us a p-value of 2.2e-16. This demonstrates that the null hypothesis is rejected and that the data given doesn't follow the normal curve. This is what allows the one-sided Wilcoxon test to be run. 
+The quasipoisson regression confirms a significant difference between the two groups. The p-value in the analysis was 0.00344, indicating a statistically significant difference in abundance between Northern and Southern counties. Specifically, the Southern counties had higher abundance counts than the Northern counties.
 
-## Interpretation of 3rd Analysis (One-Sided Wilcoxon Test)
-
-The one-sided wilcoxon test allows a researcher to determine if the two means of two different variables are significantly different from one another. In this case, it could be the comparison of the Northern and Southern abundance. This statistical test gave us the p-value of 0.2794. This shows that the Northern counties are not statistically different/higher than the Southern counties. This value expresses that the two regions are not statistically different from one another. 
-
-## Interpretation of 4th Analysis (Median Test)
-
-The median test just calculated the different means for the two regions (Northern and Southern counties). The median for the Northern counties was 3.0 and the median for the southern counties was 2.5. As you can see the Northern counties have a slightly higher abundance than the Southern counties but as supported with the other tests run we can see that the difference is not statistically different from one another. 
+The quasipoisson model was appropriate because the data were not normally distributed, and both the Northern and Southern regions showed long-tailed distributions. These high-count observations lengthened the tail and influenced the distribution even when the averages mainly remained moderate. The Northern region contains some abnormally high-count observations, while the Southern region shows more consistent patterns of abundance.
 
 # CONCLUSION
 
-Based on the evidence collected, there is little support for the original hypothesis that predicted a higher overall observation abundance in the Northern counties in Utah compared to the Southern counties. Each analysis conducted showed that there is not a significant difference between the mean abundance measurements and that a non-significant conclusion can be drawn. There is however a slight favor for the Northern direction, just not enough difference to be significant. The Northern counties were found to have a non-statistically significantly higher number of observations compared to the Southern counties in Utah.
+Based on the evidence collected, there is no support for the original hypothesis that predicted a higher overall observation abundance in the Northern counties in Utah compared to the Southern counties. Each analysis conducted showed that there is a significant difference between the mean abundance measurements and that a significant conclusion can be drawn, but in the opposite direction from the initial hypothesis. The Southern counties were found to have a statistically significantly higher number of observations compared to the Northern counties in Utah. 
 
 There were many limitations that occurred during this experiment. This data was collected from various locations in Utah, but the exact location of the sightings was undisclosed and may not be exact. Another uncertainty involves the way the data was collected. Observations were collected by multiple observers and counted manually, which may not be exactly accurate since many of the observation numbers should be considered approximate due to the difficulty of actually counting flying fireflies. The counts in Northern and Southern counties might be influenced by the Northern counties having many more observation counts compared to the Southern counties' observations. The data used in this experiment fail to support the original hypothesis, and future studies should aim to determine the differences between climates and their impact on firefly observation counts.
 
