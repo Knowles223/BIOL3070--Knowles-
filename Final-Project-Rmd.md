@@ -128,10 +128,6 @@ a Wilcoxon test was run. This test allows the means to be compared while
 assuming that the curve isn’t normal. To get more recognizable values,
 we compared the medians of the two regions.
 
-**These values allowed us to see that even though the difference wasn’t
-significant, the Northern counties had a slightly higher abundance than
-the Southern counties in Utah.**
-
 ## 1st Analysis - Violin Plot
 
 This is a violin plot that expresses the data in a visual way to compare
